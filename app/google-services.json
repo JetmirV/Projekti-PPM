@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "454330074218",
+    "firebase_url": "https://projekt-ppm-ef129.firebaseio.com",
+    "project_id": "projekt-ppm-ef129",
+    "storage_bucket": "projekt-ppm-ef129.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454330074218:android:2830fd852f01d865cb3613",
+        "android_client_info": {
+          "package_name": "com.example.car_rental"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "454330074218-8acuhgprapgs6ku2rph4lv5kks4eb2de.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.car_rental",
+            "certificate_hash": "cbf62c351b2e1d43138a56208fe3c7439c0c0039"
+          }
+        },
+        {
+          "client_id": "454330074218-kkqv227bhv45r98sdb7uoqr5d8e8vgh0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAHRvs7GSOOG5mXgAAYuh-DTPNGtZIt4-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "454330074218-kkqv227bhv45r98sdb7uoqr5d8e8vgh0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
