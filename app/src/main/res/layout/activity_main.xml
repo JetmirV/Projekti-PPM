@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/my_bg"
+    android:background="@drawable/raptor"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:gravity="center"    
@@ -42,13 +42,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp">
 
-        <info.hoang8f.widget.FButton
+       <!-- <info.hoang8f.widget.FButton
             android:id="@+id/btnSignUp"
             android:layout_margin="8dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Sign Up"
+            app:buttonColor="@color/btnSignUp"
             android:textColor="@android:color/white"
              />
 
@@ -59,6 +60,29 @@
             android:layout_weight="1"
             android:layout_margin="8dp"
             android:text="Sign In"
+            app:buttonColor="@color/btnSignActive"
+            android:textColor="@android:color/white"
+            />-->
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:id="@+id/btnSignUp"
+            android:text="Sign Up"
+            android:layout_weight="1"
+            android:background="@drawable/signup_button"
+            android:textColor="@android:color/white"
+            />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:id="@+id/btnSignIn"
+            android:text="Sign In"
+            android:layout_weight="1"
+            android:background="@drawable/signin_button"
             android:textColor="@android:color/white"
             />
 
