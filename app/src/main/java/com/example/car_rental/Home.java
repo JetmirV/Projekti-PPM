@@ -66,7 +66,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         DrawerLayout drawer =(DrawerLayout) findViewById(R.id.drawer_layout);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,toolbar,1,0);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,toolbar,1,2);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -95,7 +95,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             protected void populateViewHolder( MenuViewHolder viewHolder, Category model , int position) {
                 viewHolder.txtMenuName.setText(model.getName());
                 Picasso.with(getBaseContext()).load(model.getImage()).into(viewHolder.imageView);
-                Category clickItem = model;
+                final Category clickItem = model;
                 viewHolder.setItemClickListener(new ItemClickListener(){
                     @Override
                     public void onClick(View view,int position,boolean isLongClick){
@@ -119,7 +119,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         }
     }
 
-    @Override
+
     public boolean oncreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.home,menu);
         return true;
