@@ -24,7 +24,7 @@ public class SignIn extends AppCompatActivity {
     EditText editPhone,editPassword;
     Button btnSignIn;
     @Override
-    protected void onCreate(Bundle savedInstanceState) 
+    protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
@@ -37,30 +37,30 @@ public class SignIn extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference table_user = database.getReference("User");
 
-        btnSignIn.setOnClickListener(new View.OnClickListener() 
+        btnSignIn.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v) 
+            public void onClick(View v)
             {
                 final ProgressDialog mDialog  = new ProgressDialog(SignIn.this);
                 mDialog.setMessage("Please wating......");
                 mDialog.show();
-                table_user.addValueEventListener(new ValueEventListener() 
+                table_user.addValueEventListener(new ValueEventListener()
                 {
-                    
+
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) 
-                    {   
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+                    {
                         //check if user exists in database
                         if(dataSnapshot.child(editPhone.getText().toString()).exists())
                         {
                             //Get USer Information
                             mDialog.dismiss();
-                            User user = dataSnapshot.child(editPhone.getText().toString()).getValue(User.class); 
+                            User user = dataSnapshot.child(editPhone.getText().toString()).getValue(User.class);
                             if(user.getPassword().equals(editPassword.getText().toString()))
                             {
                                 {
-                                    Intent homeIntent = new Intent(SignIn.this,Home.class)
+                                    Intent homeIntent = new Intent(SignIn.this,Home.class);
                                     Common.currentUser = user;
                                     startActivity(homeIntent);
                                     finish();
@@ -77,7 +77,7 @@ public class SignIn extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) 
+                    public void onCancelled(@NonNull DatabaseError databaseError)
                     {
 
                     }

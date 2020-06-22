@@ -4,7 +4,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.car_rental.Interface.ItemClickListener;
@@ -21,7 +20,7 @@ public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnCl
         super(itemView);
 
         txtMenuName = ( TextView)itemView.findViewById(R.id.menu_name);
-        imageView = (ImageView)itemView.findViewById(R.id.imageView);
+        imageView = (ImageView)itemView.findViewById(R.id.menu_image);
         itemView.setOnClickListener(this);
     }
 
