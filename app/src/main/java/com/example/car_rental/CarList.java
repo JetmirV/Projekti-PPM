@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -69,8 +70,14 @@ public class CarList extends AppCompatActivity {
 
                 carViewHolder.setItemClickListener(new ItemClickListener() {
                     @Override
-                    public void onClick(View view, int postion, boolean isLongClick) {
-                        Toast.makeText(CarList.this, "" + local.getName(), Toast.LENGTH_SHORT).show();
+                    public void onClick(View view, int position, boolean isLongClick) {
+                        //Start new Activity
+                        Intent carDetail = new Intent(CarList.this,CarDetail.class);
+                        carDetail.putExtra("CarId",adapter.getRef(position).getKey());
+                        startActivity(carDetail);
+
+
+
                     }
                 });
             }
