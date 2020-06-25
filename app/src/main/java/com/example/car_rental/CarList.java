@@ -1,5 +1,6 @@
 package com.example.car_rental;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,11 +8,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.car_rental.Interface.ItemClickListener;
 import com.example.car_rental.Model.Car;
 import com.example.car_rental.ViewHolder.CarViewHolder;
+
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -55,12 +58,14 @@ public class CarList extends AppCompatActivity {
 
     private void loadListCar(String categoryID)
     {
-        adapter = new FirebaseRecyclerAdapter<Car, CarViewHolder>(
+        adapter = new FirebaseRecyclerAdapter<Car,CarViewHolder>(
                 Car.class,
                 R.layout.car_item,
                 CarViewHolder.class,
                 carList.orderByChild("CategoryID").equalTo(categoryID)
                 ) {
+
+
             @Override
             protected void populateViewHolder(CarViewHolder carViewHolder, Car car, int i) {
                 carViewHolder.car_name.setText(car.getName());
