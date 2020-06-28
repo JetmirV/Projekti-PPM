@@ -1,13 +1,21 @@
 package com.example.car_rental;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.car_rental.Common.Common;
+import com.example.car_rental.Model.Request;
 import com.example.car_rental.Model.Reservation;
 import com.example.car_rental.ViewHolder.CartAdapter;
 import com.example.car_rental.database.Database;
@@ -25,7 +33,7 @@ public class Cart extends AppCompatActivity {
     RecyclerView.LayoutManager layoutManager;
 
     FirebaseDatabase database;
-    DatabaseReference request;
+    DatabaseReference requests;
 
     TextView txtTotalPrice;
     Button btnBook;
@@ -40,7 +48,7 @@ public class Cart extends AppCompatActivity {
 
         //Firebase
         database = FirebaseDatabase.getInstance();
-        request = database.getReference("Requests");
+        requests = database.getReference("Requests");
 
         //Init
         recyclerView = (RecyclerView)findViewById(R.id.listCart);
@@ -51,7 +59,61 @@ public class Cart extends AppCompatActivity {
         txtTotalPrice = (TextView)findViewById(R.id.total);
         btnBook = (Button)findViewById(R.id.btnBook);
 
+        btnBook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showAlertDialog();
+
+            }
+        });
+
         loadListCar();
+
+    }
+
+    private void showAlertDialog() {
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(Cart.this);
+        alertDialog.setTitle("One more step!");
+        alertDialog.setMessage("Enter your address: ");
+
+        final EditText editAddress = new EditText(Cart.this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT
+        );
+        editAddress.setLayoutParams(lp);
+        alertDialog.setView(editAddress); // Add edit Text to alert dialog
+        alertDialog.setIcon(R.drawable.ic_baseline_shopping_cart_24);
+
+        alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Create new request
+                Request request = new Request(
+                        Common.currentUser.getName(),
+                        editAddress.getText().toString(),
+                        txtTotalPrice.getText().toString(),
+                        cart
+
+                );
+                //Submit to Firebase
+                //System.CurrentMilli to key
+                requests.child(String.valueOf(System.currentTimeMillis())).setValue(request);
+                // Delete cart
+                new Database(getBaseContext()).cleanCart();
+                Toast.makeText(Cart.this, "Thank you ", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        });
+        alertDialog.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+
+
+        alertDialog.show();
 
     }
 

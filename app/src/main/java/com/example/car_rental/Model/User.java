@@ -4,6 +4,15 @@ public class User
 {
     private String Name;
     private String Password;
+    private String Phone;
+
+    public String getPhone() {
+        return Phone;
+    }
+
+    public void setPhone(String phone) {
+        Phone = phone;
+    }
 
     public User() {
     }
