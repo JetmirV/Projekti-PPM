@@ -8,19 +8,20 @@ import android.os.Bundle;
 
 import com.example.car_rental.Common.Common;
 import com.example.car_rental.Model.Request;
-import com.example.car_rental.ViewHolder.OrderViewHolder;
-import com.example.car_rental.database.Database;
+import com.example.car_rental.Model.Reservation;
+import com.example.car_rental.ViewHolder.ReservationViewHolder;
+import com.example.car_rental.Database.Database;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class OrderStatus extends AppCompatActivity {
+public class ReservationStatus extends AppCompatActivity {
 
 
     public RecyclerView recyclerView;
     public RecyclerView.LayoutManager layoutManager;
 
-    FirebaseRecyclerAdapter<Request, OrderViewHolder> adapter;
+    FirebaseRecyclerAdapter<Request, ReservationViewHolder> adapter;
 
     FirebaseDatabase database;
     DatabaseReference requests;
@@ -29,37 +30,33 @@ public class OrderStatus extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order_status);
+        setContentView(R.layout.activity_reservation_status);
 
         //Firebase
-
         database = FirebaseDatabase.getInstance();
         requests = database.getReference("Requests");
 
-        recyclerView=(RecyclerView)findViewById(R.id.listOrders);
+        recyclerView=(RecyclerView)findViewById(R.id.listReservations);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        loadOrders(Common.currentUser.getPhone());
-
-
-
+        loadReservations(Common.currentUser.getPhone());
 
     }
-    private void loadOrders(String phone){
-        adapter = new FirebaseRecyclerAdapter<Request, OrderViewHolder>(
+    private void loadReservations(String phone){
+        adapter = new FirebaseRecyclerAdapter<Request, ReservationViewHolder>(
                 Request.class,
-                R.layout.order_layout,
-                OrderViewHolder.class,
+                R.layout.reservation_layout,
+                ReservationViewHolder.class,
                 requests.orderByChild("phone").equalTo(phone)
         ) {
             @Override
-            protected void populateViewHolder(OrderViewHolder viewHolder, Request model, int position) {
-                viewHolder.txtOrderId.setText(adapter.getRef(position).getKey());
-                viewHolder.txtOrderStatus.setText(convertCodeToStatus(model.getStatus()));
-                viewHolder.txtOrderAddress.setText(model.getAddress());
-                viewHolder.txtOrderPhone.setText(model.getPhone());
+            protected void populateViewHolder(ReservationViewHolder viewHolder, Request model, int position) {
+                viewHolder.txtReservationId.setText(adapter.getRef(position).getKey());
+                viewHolder.txtReservationStatus.setText(convertCodeToStatus(model.getStatus()));
+                viewHolder.txtReservationAddress.setText(model.getAddress());
+                viewHolder.txtReservationPhone.setText(model.getPhone());
 
             }
         };

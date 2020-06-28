@@ -1,4 +1,4 @@
-package com.example.car_rental.database;
+package com.example.car_rental.Database;
 
 import android.content.Context;
 import android.database.Cursor;

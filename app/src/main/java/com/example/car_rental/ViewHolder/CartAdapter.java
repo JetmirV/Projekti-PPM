@@ -22,8 +22,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
-class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
-{
+class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
     public TextView txt_cart_name, txt_price;
     public ImageView img_cart_count;
 

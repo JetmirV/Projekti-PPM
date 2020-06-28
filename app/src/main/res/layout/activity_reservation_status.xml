@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/raptor"
-    tools:context=".OrderStatus">
+    tools:context=".ReservationStatus">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/listOrders"
+        android:id="@+id/listReservations"
         android:background="@android:color/transparent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></androidx.recyclerview.widget.RecyclerView>

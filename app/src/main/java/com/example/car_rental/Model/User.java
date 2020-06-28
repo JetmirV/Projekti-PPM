@@ -6,13 +6,6 @@ public class User
     private String Password;
     private String Phone;
 
-    public String getPhone() {
-        return Phone;
-    }
-
-    public void setPhone(String phone) {
-        Phone = phone;
-    }
 
     public User() {
     }
@@ -21,7 +14,13 @@ public class User
         Name = name;
         Password = password;
     }
+    public String getPhone() {
+        return Phone;
+    }
 
+    public void setPhone(String phone) {
+        Phone = phone;
+    }
     public String getName() {
         return Name;
     }

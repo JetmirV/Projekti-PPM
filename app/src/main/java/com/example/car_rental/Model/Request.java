@@ -7,14 +7,12 @@ public class Request {
     private  String name;
     private  String address;
     private  String total;
-    private String status;
-    private List<Order> cars; //list of car order;
+    private  String status;
+    private  List<Reservation> cars; //list of car order;
 
 
-    public Request(String name, String s, String toString, List<Reservation> cart) {
-    }
 
-    public Request(String phone, String name, String address, String total, List<Order> cars) {
+    public Request(String phone, String name, String address, String total, List<Reservation> cars) {
         this.phone = phone;
         this.name = name;
         this.address = address;
@@ -63,11 +61,11 @@ public class Request {
         this.total = total;
     }
 
-    public List<Order> getCars() {
+    public List<Reservation> getCars() {
         return cars;
     }
 
-    public void setCars(List<Order> cars) {
+    public void setCars(List<Reservation> cars) {
         this.cars = cars;
     }
 }

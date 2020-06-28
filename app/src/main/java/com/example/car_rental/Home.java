@@ -114,7 +114,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         recycler_menu.setAdapter(adapter);
     }
 
-
+    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public void onBackPressed(){
         DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
@@ -150,9 +150,9 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
             Intent cartIntent = new Intent(Home.this,Cart.class);
             startActivity(cartIntent);
 
-        }else if( id == R.id.nav_orders){
-            Intent orderIntent = new Intent(Home.this,OrderStatus.class);
-            startActivity(orderIntent);
+        }else if( id == R.id.nav_reservations){
+            Intent reservationIntent = new Intent(Home.this,ReservationStatus.class);
+            startActivity(reservationIntent);
 
 
         }else if (id == R.id.nav_logout){

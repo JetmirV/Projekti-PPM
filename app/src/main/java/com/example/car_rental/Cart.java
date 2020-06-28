@@ -18,7 +18,7 @@ import com.example.car_rental.Common.Common;
 import com.example.car_rental.Model.Request;
 import com.example.car_rental.Model.Reservation;
 import com.example.car_rental.ViewHolder.CartAdapter;
-import com.example.car_rental.database.Database;
+import com.example.car_rental.Database.Database;
 //import com.firebase.ui.database.paging.FirebaseDataSource;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -90,6 +90,7 @@ public class Cart extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 // Create new request
                 Request request = new Request(
+                        Common.currentUser.getPhone(),
                         Common.currentUser.getName(),
                         editAddress.getText().toString(),
                         txtTotalPrice.getText().toString(),
