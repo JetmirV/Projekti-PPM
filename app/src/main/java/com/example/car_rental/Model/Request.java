@@ -10,7 +10,8 @@ public class Request {
     private  String status;
     private  List<Reservation> cars; //list of car order;
 
-
+    public Request() {
+    }
 
     public Request(String phone, String name, String address, String total, List<Reservation> cars) {
         this.phone = phone;
