@@ -18,7 +18,7 @@ public class ReservationViewHolder extends RecyclerView.ViewHolder implements Vi
 
     public ReservationViewHolder(View itemView) {
         super(itemView);
-        txtReservationAddress =(TextView)itemView.findViewById(R.id.reservation_address);
+        //txtReservationAddress =(TextView)itemView.findViewById(R.id.reservation_address);
         txtReservationId=(TextView)itemView.findViewById(R.id.reservation_id);
         txtReservationStatus =(TextView)itemView.findViewById(R.id.reservation_status);
         txtReservationPhone =(TextView)itemView.findViewById(R.id.reservation_phone);
@@ -33,7 +33,7 @@ public class ReservationViewHolder extends RecyclerView.ViewHolder implements Vi
     @Override
     public void onClick(View view) {
 
-        itemClickListener.onClick(view,getAdapterPosition(),false);
+       // itemClickListener.onClick(view,getAdapterPosition(),false);
 
     }
 }

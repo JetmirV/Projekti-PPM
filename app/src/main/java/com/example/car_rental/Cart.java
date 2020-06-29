@@ -73,17 +73,10 @@ public class Cart extends AppCompatActivity {
 
     private void showAlertDialog() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(Cart.this);
-        alertDialog.setTitle("One more step!");
-        alertDialog.setMessage("Enter your address: ");
+        alertDialog.setTitle("Confirmation!");
+        alertDialog.setMessage("Are you sure you want to make a reservation");
 
-        final EditText editAddress = new EditText(Cart.this);
-        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.MATCH_PARENT
-        );
-        editAddress.setLayoutParams(lp);
-        alertDialog.setView(editAddress); // Add edit Text to alert dialog
-        alertDialog.setIcon(R.drawable.ic_baseline_shopping_cart_24);
+
 
         alertDialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
@@ -92,7 +85,7 @@ public class Cart extends AppCompatActivity {
                 Request request = new Request(
                         Common.currentUser.getPhone(),
                         Common.currentUser.getName(),
-                        editAddress.getText().toString(),
+                        /*editAddress.getText().toString(),*/
                         txtTotalPrice.getText().toString(),
                         cart
 
@@ -102,7 +95,7 @@ public class Cart extends AppCompatActivity {
                 requests.child(String.valueOf(System.currentTimeMillis())).setValue(request);
                 // Delete cart
                 new Database(getBaseContext()).cleanCart();
-                Toast.makeText(Cart.this, "Thank you ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Cart.this, "Thank you, Reservation processed! ", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

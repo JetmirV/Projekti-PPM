@@ -55,7 +55,7 @@ public class ReservationStatus extends AppCompatActivity {
             protected void populateViewHolder(ReservationViewHolder viewHolder, Request model, int position) {
                 viewHolder.txtReservationId.setText(adapter.getRef(position).getKey());
                 viewHolder.txtReservationStatus.setText(convertCodeToStatus(model.getStatus()));
-                viewHolder.txtReservationAddress.setText(model.getAddress());
+                //viewHolder.txtReservationAddress.setText(model.getAddress());
                 viewHolder.txtReservationPhone.setText(model.getPhone());
 
             }
