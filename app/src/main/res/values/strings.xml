@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">car-rental</string>
+    <string name="app_name">Rentlot</string>
 
     <string name="slogan">Just another APP</string>
     <string name="title_activity_home">Home</string>

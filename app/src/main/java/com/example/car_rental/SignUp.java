@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.car_rental.Common.Common;
 import com.example.car_rental.Model.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 public class SignUp extends AppCompatActivity {
-    MaterialEditText editPhone,editPassword,editName;
+    MaterialEditText editPhone,editPassword,editName,editUsername;
     Button btnSignUp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class SignUp extends AppCompatActivity {
         editPhone = (MaterialEditText)findViewById(R.id.editPhone);
         editName = (MaterialEditText)findViewById(R.id.editName);
         editPassword = (MaterialEditText)findViewById(R.id.editPassword);
+        editUsername = (MaterialEditText)findViewById(R.id.editUsername);
 
         btnSignUp = (Button)findViewById(R.id.btnSignUp);
 
@@ -38,39 +40,52 @@ public class SignUp extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v)
-            {
-                final ProgressDialog mDialog  = new ProgressDialog(SignUp.this);
-                mDialog.setMessage("Please waiting......");
-                mDialog.show();
+            public void onClick(View v) {
+                if (Common.isConnectedToInternet(getBaseContext())) {
 
-                table_user.addValueEventListener(new ValueEventListener()
-                {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-                    {
-                        //check if the phone number exists
-                        if(dataSnapshot.child(editPhone.getText().toString()).exists())
-                        {
-                            mDialog.dismiss();
-                            Toast.makeText(SignUp.this, "Phone Number already exists !", Toast.LENGTH_SHORT).show();
-                        }else
-                        {
-                            mDialog.dismiss();
-                            User user = new User(editName.getText().toString(),editPassword.getText().toString());
-                            table_user.child(editPhone.getText().toString()).setValue(user);
-                            Toast.makeText(SignUp.this, "Sugn Up succsesfull !", Toast.LENGTH_SHORT).show();
-                            finish();
+                    final ProgressDialog mDialog = new ProgressDialog(SignUp.this);
+                    mDialog.setMessage("Please waiting......");
+                    mDialog.show();
+
+                    table_user.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            //Validate the name input
+                            if (!(editName.getText().toString()).matches(".*\\d.*")) {   //Validate the Phone input
+                                if (!(editPhone.getText().toString()).matches(".*[a-z].*")) {   //check if the username exists
+                                    if (dataSnapshot.child(editUsername.getText().toString().toLowerCase()).exists()) {
+                                        mDialog.dismiss();
+                                        Toast.makeText(SignUp.this, "Username already exists !", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        mDialog.dismiss();
+                                        User user = new User(editName.getText().toString(), editPassword.getText().toString(), editPhone.getText().toString());
+                                        table_user.child(editUsername.getText().toString().toLowerCase()).setValue(user);
+                                        Toast.makeText(SignUp.this, "Sign Up succsesfull !", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    }
+                                } else {
+                                    mDialog.dismiss();
+                                    Toast.makeText(SignUp.this, "Phone field contains letters!", Toast.LENGTH_SHORT).show();
+                                }
+
+                            } else {
+                                mDialog.dismiss();
+                                Toast.makeText(SignUp.this, "Name field contains numbers!", Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError)
-                    {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    }
-                });
+                        }
+                    });
 
+                }
+                else
+                {
+                    Toast.makeText(SignUp.this,"Please check you internet connection!",Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
         });
 

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.car_rental.Common.Common;
 import com.example.car_rental.Interface.ItemClickListener;
 import com.example.car_rental.Model.Car;
 import com.example.car_rental.ViewHolder.CarViewHolder;
@@ -67,7 +68,14 @@ public class CarList extends AppCompatActivity {
         }
         if(!categoryID.isEmpty() && categoryID != null)
         {
-            loadListCar(categoryID);
+            if(Common.isConnectedToInternet(getBaseContext()))
+                loadListCar(categoryID);
+            else
+            {
+                Toast.makeText(CarList.this,"Please check you internet connection!",Toast.LENGTH_SHORT).show();
+                return;
+            }
+
         }
         
         //Search

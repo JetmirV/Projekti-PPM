@@ -2,18 +2,30 @@ package com.example.car_rental.Model;
 
 public class User
 {
+    private String Username;
     private String Name;
     private String Password;
     private String Phone;
 
 
+
     public User() {
     }
 
-    public User(String name, String password) {
+    public User(String name, String password, String phone) {
         Name = name;
         Password = password;
+        Phone = phone;
     }
+
+    public String getUsername() {
+        return Username;
+    }
+
+    public void setUsername(String username) {
+        Username = username;
+    }
+
     public String getPhone() {
         return Phone;
     }

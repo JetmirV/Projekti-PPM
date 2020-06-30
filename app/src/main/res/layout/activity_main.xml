@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/raptor"
+    android:background = "@drawable/raptor_blur"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:gravity="center"    
@@ -18,17 +18,10 @@
         >
 
         <ImageView
-            android:src="@drawable/all_models"
+            android:src="@drawable/rentlot_1"
             android:layout_width="wrap_content"
             android:layout_height="200dp"/>
 
-        <TextView
-            android:gravity="center"
-            android:id="@+id/txtSlogan"
-            android:text="@string/slogan"
-            android:textColor="@android:color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
 
 
     </LinearLayout>
@@ -42,27 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="200dp">
 
-       <!-- <info.hoang8f.widget.FButton
-            android:id="@+id/btnSignUp"
-            android:layout_margin="8dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Sign Up"
-            app:buttonColor="@color/btnSignUp"
-            android:textColor="@android:color/white"
-             />
 
-        <info.hoang8f.widget.FButton
-            android:id="@+id/btnSignIn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_margin="8dp"
-            android:text="Sign In"
-            app:buttonColor="@color/btnSignActive"
-            android:textColor="@android:color/white"
-            />-->
 
         <Button
             android:layout_width="0dp"

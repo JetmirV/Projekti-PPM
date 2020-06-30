@@ -16,12 +16,12 @@
         android:layout_height="wrap_content">
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:id="@+id/editPhone"
-            android:hint="Phone Number"
+            android:id="@+id/editUsername"
+            android:hint="Username"
             android:layout_height="match_parent"
             android:layout_width="wrap_content"
             android:textColorHint="@android:color/white"
-            android:text="554195"
+            android:text="jetmir"
             android:textColor="@android:color/white"
             android:textSize="34sp"
             android:inputType="phone"

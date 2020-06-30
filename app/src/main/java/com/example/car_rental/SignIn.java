@@ -21,7 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 public class SignIn extends AppCompatActivity {
-    EditText editPhone,editPassword;
+    EditText editUsername,editPassword;
     Button btnSignIn;
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,7 +30,7 @@ public class SignIn extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
 
         editPassword = (MaterialEditText)findViewById(R.id.editPassword);
-        editPhone = (MaterialEditText)findViewById(R.id.editPhone);
+        editUsername = (MaterialEditText)findViewById(R.id.editUsername);
         btnSignIn = (Button)findViewById(R.id.btnSignIn);
 
         //Initialize firebase
@@ -40,50 +40,51 @@ public class SignIn extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v)
-            {
-                final ProgressDialog mDialog  = new ProgressDialog(SignIn.this);
-                mDialog.setMessage("Please wating......");
-                mDialog.show();
-                table_user.addValueEventListener(new ValueEventListener()
-                {
+            public void onClick(View v) {
 
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-                    {
-                        //check if user exists in database
-                        if(dataSnapshot.child(editPhone.getText().toString()).exists())
-                        {
-                            //Get USer Information
-                            mDialog.dismiss();
-                            User user = dataSnapshot.child(editPhone.getText().toString()).getValue(User.class);
-                            user.setPhone(editPhone.getText().toString());
-                            if(user.getPassword().equals(editPassword.getText().toString()))
-                            {
-                                {
-                                    Intent homeIntent = new Intent(SignIn.this,Home.class);
-                                    Common.currentUser = user;
-                                    startActivity(homeIntent);
-                                    finish();
+                if (Common.isConnectedToInternet(getBaseContext())) {
+
+                    final ProgressDialog mDialog = new ProgressDialog(SignIn.this);
+                    mDialog.setMessage("Please wating......");
+                    mDialog.show();
+                    table_user.addValueEventListener(new ValueEventListener() {
+
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            //check if user exists in database
+                            if (dataSnapshot.child(editUsername.getText().toString()).exists()) {
+                                //Get USer Information
+                                mDialog.dismiss();
+                                User user = dataSnapshot.child(editUsername.getText().toString()).getValue(User.class);
+                                user.setPhone(editUsername.getText().toString());
+                                if (user.getPassword().equals(editPassword.getText().toString())) {
+                                    {
+                                        Intent homeIntent = new Intent(SignIn.this, Home.class);
+                                        Common.currentUser = user;
+                                        startActivity(homeIntent);
+                                        finish();
+                                    }
+                                } else {
+                                    Toast.makeText(SignIn.this, "Sign In not Succsesfull !", Toast.LENGTH_SHORT).show();
                                 }
-                            }else
-                            {
-                                Toast.makeText(SignIn.this, "Sign In not Succsesfull !", Toast.LENGTH_SHORT).show();
+                            } else {
+                                mDialog.dismiss();
+                                Toast.makeText(SignIn.this, "User doesen't exist in database !", Toast.LENGTH_SHORT).show();
                             }
-                        }else
-                        {
-                            mDialog.dismiss();
-                            Toast.makeText(SignIn.this, "User doesen't exist in database !", Toast.LENGTH_SHORT).show();
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError)
-                    {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                    }
-                });
+                        }
+                    });
+                } else
+                {
+                    Toast.makeText(SignIn.this,"Please check you internet connection!",Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
+
         });
     }
 }

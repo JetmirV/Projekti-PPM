@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cepheuen.elegantnumberbutton.view.ElegantNumberButton;
+import com.example.car_rental.Common.Common;
 import com.example.car_rental.Model.Car;
 import com.example.car_rental.Model.Reservation;
 import com.example.car_rental.Database.Database;
@@ -82,7 +83,13 @@ public class CarDetail extends AppCompatActivity {
             carId = getIntent().getStringExtra("CarId");
 
         if(!carId.isEmpty()){
-            getDetailCar(carId);
+            if(Common.isConnectedToInternet(getBaseContext()))
+                getDetailCar(carId);
+            else
+            {
+                Toast.makeText(CarDetail.this,"Please check you internet connection!",Toast.LENGTH_SHORT).show();
+                return;
+            }
         }
         
     }

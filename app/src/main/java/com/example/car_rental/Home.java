@@ -88,7 +88,13 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         layoutManager = new LinearLayoutManager(this);
         recycler_menu.setLayoutManager(layoutManager);
 
-        loadMenu();
+        if(Common.isConnectedToInternet(getBaseContext()))
+            loadMenu();
+        else
+        {
+            Toast.makeText(Home.this,"Please check you internet connection!",Toast.LENGTH_SHORT).show();
+            return;
+        }
 
     }
 
@@ -133,7 +139,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-
+        if(item.getItemId() == R.id.refresh)
+            loadMenu();
         return super.onOptionsItemSelected(item);
     }
 
