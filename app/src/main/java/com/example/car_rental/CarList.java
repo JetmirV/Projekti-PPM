@@ -19,6 +19,7 @@ import com.example.car_rental.Model.Car;
 import com.example.car_rental.ViewHolder.CarViewHolder;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -70,10 +71,19 @@ public class CarList extends AppCompatActivity {
         {
             if(Common.isConnectedToInternet(getBaseContext()))
                 loadListCar(categoryID);
-            else
-            {
-                Toast.makeText(CarList.this,"Please check you internet connection!",Toast.LENGTH_SHORT).show();
-                return;
+            else {
+                /*Toast.makeText(CarList.this,"Please check you internet connection!",Toast.LENGTH_SHORT).show();
+                return;*/
+
+                    final Snackbar snackbar = Snackbar.make(recyclerView, "Please Check your internet conection", Snackbar.LENGTH_INDEFINITE)
+                            .setAction("Refresh", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                   loadListCar(categoryID);
+                                }
+                            });
+                    snackbar.show();
+
             }
 
         }

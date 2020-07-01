@@ -94,6 +94,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         {
             Toast.makeText(Home.this,"Please check you internet connection!",Toast.LENGTH_SHORT).show();
             return;
+
         }
 
     }

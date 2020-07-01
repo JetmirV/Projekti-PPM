@@ -3,7 +3,7 @@ package com.example.car_rental.Model;
 import java.util.List;
 
 public class Request {
-    private  String phone;
+    private  String Username;
     private  String name;
    // private  String address;
     private  String total;
@@ -13,8 +13,8 @@ public class Request {
     public Request() {
     }
 
-    public Request(String phone, String name, /*String address,*/ String total, List<Reservation> cars) {
-        this.phone = phone;
+    public Request(String username, String name, /*String address,*/ String total, List<Reservation> cars) {
+        this.Username = username;
         this.name = name;
         //this.address = address;
         this.total = total;
@@ -30,12 +30,12 @@ public class Request {
         this.status = status;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getUsername() {
+        return Username;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setUsername(String username) {
+        Username = username;
     }
 
     public String getName() {

@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
+import com.example.car_rental.CarDetail;
+import com.example.car_rental.Cart;
 import com.example.car_rental.Common.Common;
 import com.example.car_rental.Interface.ItemClickListener;
 import com.example.car_rental.Model.Reservation;
@@ -30,6 +32,8 @@ class CartViewHolder extends RecyclerView.ViewHolder implements View.OnClickList
     public ImageView img_cart_count;
 
     private ItemClickListener itemClickListener;
+
+    CarDetail carDetail;
 
     public void setTxt_cart_name(TextView txt_cart_name) {
         this.txt_cart_name = txt_cart_name;
@@ -76,12 +80,20 @@ public class CartAdapter extends RecyclerView.Adapter<CartViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull CartViewHolder holder, int position) {
-        TextDrawable drawable = TextDrawable.builder().buildRound(""+listData.get(position).getQuantity(), Color.RED);
+        TextDrawable drawable = TextDrawable.builder().buildRound(""+listData.get(position).getReservationTime(), Color.RED);
         holder.img_cart_count.setImageDrawable(drawable);
+        CarDetail carDetail = null;
+        int price = 0;
+
 
         Locale locale = new Locale("en","US");
         NumberFormat fmt = NumberFormat.getCurrencyInstance(locale);
-        int price = (Integer.parseInt((listData.get(position).getPrice()).split(" ",3)[0])) * (Integer.parseInt(listData.get(position).getQuantity()));
+        if(listData.get(position).getTimeType().equals("Hours")) {
+            price = (Integer.parseInt((listData.get(position).getPrice()).split(" ", 3)[0])) * (Integer.parseInt(listData.get(position).getReservationTime()));
+        }else if(listData.get(position).getTimeType().equals("Days"))
+        {
+            price = (Integer.parseInt((listData.get(position).getPrice()).split(" ", 3)[0])) * (Integer.parseInt(listData.get(position).getReservationTime())) * 24;
+        }
         holder.txt_price.setText(fmt.format(price));
         holder.txt_cart_name.setText(listData.get(position).getCarName());
 

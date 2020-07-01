@@ -123,19 +123,40 @@
                             android:layout_height="wrap_content"/>
 
                     </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/Reservation_time"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
 
-                    <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
-                        android:layout_width="100dp"
-                        android:layout_height="30dp"
-                        android:id="@+id/number_button"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginBottom="18dp"
-                        app:textSize="8sp"
-                        app:backGroundColor="@color/colorAccent"
-                        app:initialNumber="1"
-                        app:finalNumber="20"
-                        />
+                        <ImageView
+                            android:src="@drawable/ic_baseline_access_time_24"
+                            android:layout_margin="9dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"/>
+
+                        <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+                            android:layout_width="100dp"
+                            android:layout_height="30dp"
+
+                            android:id="@+id/number_button"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginLeft="8dp"
+                            android:layout_marginBottom="18dp"
+                            app:textSize="8sp"
+                            app:backGroundColor="@color/colorAccent"
+                            app:initialNumber="1"
+                            app:finalNumber="20"
+                            />
+                        <Spinner
+                            android:id="@+id/spiner"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_margin="8dp"/>
+
+
+                    </LinearLayout>
+
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>

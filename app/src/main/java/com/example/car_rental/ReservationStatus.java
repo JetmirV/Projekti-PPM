@@ -41,22 +41,22 @@ public class ReservationStatus extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        loadReservations(Common.currentUser.getPhone());
+        loadReservations(Common.currentUser.getUsername());
 
     }
-    private void loadReservations(String phone){
+    private void loadReservations(String username){
         adapter = new FirebaseRecyclerAdapter<Request, ReservationViewHolder>(
                 Request.class,
                 R.layout.reservation_layout,
                 ReservationViewHolder.class,
-                requests.orderByChild("phone").equalTo(phone)
+                requests.orderByChild("username").equalTo(username)
         ) {
             @Override
             protected void populateViewHolder(ReservationViewHolder viewHolder, Request model, int position) {
                 viewHolder.txtReservationId.setText(adapter.getRef(position).getKey());
                 viewHolder.txtReservationStatus.setText(convertCodeToStatus(model.getStatus()));
                 //viewHolder.txtReservationAddress.setText(model.getAddress());
-                viewHolder.txtReservationPhone.setText(model.getPhone());
+                viewHolder.txtReservationPhone.setText(model.getUsername());
 
             }
         };

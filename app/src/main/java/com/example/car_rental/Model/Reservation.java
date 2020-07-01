@@ -4,17 +4,27 @@ public class Reservation {
 
     private String CarID;
     private String CarName;
-    private String Quantity;
+    private String ReservationTime;
     private String Price;
+    private String TimeType;
 
     public Reservation() {
     }
 
-    public Reservation(String carID, String carName, String quantity, String price) {
+    public Reservation(String carID, String carName, String reservationTime, String price,String timeType) {
         CarID = carID;
         CarName = carName;
-        Quantity = quantity;
+        ReservationTime = reservationTime;
         Price = price;
+        TimeType = timeType;
+    }
+
+    public String getTimeType() {
+        return TimeType;
+    }
+
+    public void setTimeType(String timeType) {
+        TimeType = timeType;
     }
 
     public String getCarID() {
@@ -33,12 +43,12 @@ public class Reservation {
         CarName = carName;
     }
 
-    public String getQuantity() {
-        return Quantity;
+    public String getReservationTime() {
+        return ReservationTime;
     }
 
-    public void setQuantity(String quantity) {
-        Quantity = quantity;
+    public void setReservationTime(String reservationTime) {
+        ReservationTime = reservationTime;
     }
 
     public String getPrice() {

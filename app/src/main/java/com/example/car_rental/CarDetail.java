@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
-public class CarDetail extends AppCompatActivity {
+public class CarDetail extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     TextView car_name,car_price,car_description;
     ImageView car_image;
@@ -36,6 +39,15 @@ public class CarDetail extends AppCompatActivity {
     DatabaseReference cars;
 
     Car currentCar;
+
+    Spinner spiner;
+
+    private String spinerValue;
+
+    public String getSpinerValue() {
+        return spinerValue;
+    }
+
 
 
     @Override
@@ -60,7 +72,8 @@ public class CarDetail extends AppCompatActivity {
                         carId,
                         currentCar.getName(),
                         numberButton.getNumber(),
-                        currentCar.getPrice()
+                        currentCar.getPrice(),
+                        spinerValue
                 ));
 
                 Toast.makeText(CarDetail.this, "Added to Cart", Toast.LENGTH_SHORT).show();
@@ -91,6 +104,12 @@ public class CarDetail extends AppCompatActivity {
                 return;
             }
         }
+
+        spiner = (Spinner)findViewById(R.id.spiner);
+        ArrayAdapter<CharSequence> spinerAdapter = ArrayAdapter.createFromResource(this,R.array.time_selector,android.R.layout.simple_spinner_item);
+        spinerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spiner.setAdapter(spinerAdapter);
+        spiner.setOnItemSelectedListener(this);
         
     }
 
@@ -120,6 +139,16 @@ public class CarDetail extends AppCompatActivity {
 
             }
         });
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        spinerValue = parent.getItemAtPosition(position).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }

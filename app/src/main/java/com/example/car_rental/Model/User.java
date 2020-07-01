@@ -13,6 +13,7 @@ public class User
     }
 
     public User(String name, String password, String phone) {
+
         Name = name;
         Password = password;
         Phone = phone;

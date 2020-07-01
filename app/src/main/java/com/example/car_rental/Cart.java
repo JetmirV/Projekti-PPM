@@ -88,9 +88,8 @@ public class Cart extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
                 // Create new request
                 Request request = new Request(
-                        Common.currentUser.getPhone(),
+                        Common.currentUser.getUsername(),
                         Common.currentUser.getName(),
-                        /*editAddress.getText().toString(),*/
                         txtTotalPrice.getText().toString(),
                         cart
 
@@ -123,11 +122,14 @@ public class Cart extends AppCompatActivity {
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
 
+
         //Calculate total price
         int total = 0;
         for(Reservation reservation:cart) {
-
-            total+=(Integer.parseInt((reservation.getPrice()).split(" ",3)[0])) * (Integer.parseInt(reservation.getQuantity()));
+            if(reservation.getTimeType().toString().equals("Hours"))
+                total += (Integer.parseInt((reservation.getPrice()).split(" ", 3)[0])) * (Integer.parseInt(reservation.getReservationTime()));
+            else
+                total += (Integer.parseInt((reservation.getPrice()).split(" ", 3)[0])) * 24 *(Integer.parseInt(reservation.getReservationTime()));
         }
 
         Locale locale = new Locale("en","US");
