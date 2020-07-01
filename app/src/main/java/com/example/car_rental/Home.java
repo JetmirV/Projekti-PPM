@@ -32,6 +32,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import io.paperdb.Paper;
+
 public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     // // private AppBarConfiguration mAppBarConfiguration;
@@ -56,6 +58,7 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
         //Firebase
         database = FirebaseDatabase.getInstance();
         category = database.getReference("Category");
+        Paper.init(this);
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -163,6 +166,8 @@ public class Home extends AppCompatActivity implements NavigationView.OnNavigati
 
 
         }else if (id == R.id.nav_logout){
+            //Delte remembered user and password
+            Paper.book().destroy();
             //Logout
             Intent signIn = new Intent(Home.this,SignIn.class);
             signIn.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -20,9 +21,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import io.paperdb.Paper;
+
 public class SignIn extends AppCompatActivity {
     EditText editUsername,editPassword;
     Button btnSignIn;
+    CheckBox ckbRemember;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -32,6 +36,10 @@ public class SignIn extends AppCompatActivity {
         editPassword = (MaterialEditText)findViewById(R.id.editPassword);
         editUsername = (MaterialEditText)findViewById(R.id.editUsername);
         btnSignIn = (Button)findViewById(R.id.btnSignIn);
+        ckbRemember = (CheckBox)findViewById(R.id.ckbRemember);
+
+        //Init Paper
+        Paper.init(this);
 
         //Initialize firebase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -43,6 +51,16 @@ public class SignIn extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (Common.isConnectedToInternet(getBaseContext())) {
+
+                    //Save user and password
+                    if(ckbRemember.isChecked())
+                    {
+                        Paper.book().write(Common.USER_KEY,editUsername.getText().toString());
+                        Paper.book().write(Common.PWD_KEY,editPassword.getText().toString());
+                    }
+
+
+
 
                     final ProgressDialog mDialog = new ProgressDialog(SignIn.this);
                     mDialog.setMessage("Please wating......");
