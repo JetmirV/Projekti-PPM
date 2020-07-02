@@ -48,6 +48,7 @@ Rentlot ka disa fuksionalitete,disa do t'i përmendim  në **vijim:**
    
 
 Pas kyçjes përdoruesi do të shohë listën e kategorive të veturave,si dhe do të ketë mundësinë ta shfytëzojë një **menu** e cila përmban në vete këto elemente:  
+
    > 1.Menu
    > 2.Cart
    > 3.Reservations
