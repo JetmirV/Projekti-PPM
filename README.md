@@ -19,7 +19,7 @@ Rentlot ka disa fuksionalitete,ato t'i përmendim  në **vijim:**
 > -  Veturat mund të zgjedhen,dhe pastaj klienti informohet për çmimin e llogaritur në $/h.
 > - Vetura/Veturat e rezervuara mund të caktohen për shfrytëzim në kohëzgjatje prej disa orë deri në disa ditë,e kjo varësisht nga dëshira e  klientit!
 > - Pas zgjedhjes,të dhënat rreth veturës së zgjedhur ruhen në **Cart**-ën e klientit.
-> - Brenda Cart-ës klienti mund të bëj edhe hapi e radhes për rezervim,dhe gjithashtu njoftohet me çmimin total për pagesë.
+> - Brenda Cart-ës klienti mund të bëj edhe hapin e radhës për rezervim,dhe gjithashtu njoftohet me çmimin total për pagesë.
 > - Pas rezervimit,aplikacioni i ofron klientit mundësinë e shikimit të listës me rezervime.
 > - Në fund klienti mund të shkyçet nga llogaria e tij duke shfytëzuar opsionin **"Sign out"** 
 
