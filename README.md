@@ -70,6 +70,5 @@ Në projekt punuan:
 > **Univeriteti i Prishtinës** //
 > **Fakulteti i Inxhinierisë Elektrike dhe Kompjuterike** //
 > **Departamenti i Inxhinierisë Kompjuterike** //
-> Korrik/2020
 
-                                                                                   Prishtinë/2020
+                                                                                   > Korrik/2020
