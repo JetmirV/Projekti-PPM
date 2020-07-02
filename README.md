@@ -36,7 +36,7 @@ Rentlot ka disa fuksionalitete,ato t'i përmendim  në **vijim:**
 > - <kbd>Numrin e telefonit</kbd> 
 > - <kbd>Fjalëkalimin</kbd>     
 	   
-**Kyçja i përdoruesit** **---** Për t'u kyçur duhet dhënë këto  informacione: 
+**Kyçja e përdoruesit** **---** Për t'u kyçur duhet dhënë këto  informacione: 
 > - <kbd>Emrin për përdorim(username)</kbd>  
 > - <kbd>Fjalëkalimin</kbd>     
 
