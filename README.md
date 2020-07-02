@@ -31,12 +31,14 @@ Rentlot ka disa fuksionalitete,disa do t'i përmendim  në **vijim:**
 #### <i class="icon-file"></i> Ana teknike e aplikacionit.
 
 **Regjistrimi i përdoruesit** **---** Për t'u regjistruar duhet dhënë këto  informacione: 
+
 	   > - <kbd>Emrin</kbd>
 	   > - <kbd>Emrin për përdorim(username)</kbd>  
 	   > - <kbd>Numrin e telefonit</kbd> 
 	   > - <kbd>Fjalëkalimin</kbd>     
 	   
 **Kyçja i përdoruesit** **--** Për t'u kyçur duhet dhënë këto  informacione: 
+
 	   > - <kbd>Emrin për përdorim(username)</kbd>  
 	   > - <kbd>Fjalëkalimin</kbd>     
 
