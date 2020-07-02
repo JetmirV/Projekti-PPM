@@ -57,7 +57,7 @@ Pas kyçjes përdoruesi do të shohë listën e kategorive të veturave,si dhe d
 Siper opsioneve të përmendura do të shfaqet edhe emri i përdoruesit
 
 
-****Aplikacioni i përshkruar përmes pamjeve****
+****Aplikacioni i përshkruar përmes pamjeve!****
 
 ![enter image description here](https://i.ibb.co/fqdMLB6/Rentlot.png)
 
