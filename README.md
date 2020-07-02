@@ -31,14 +31,14 @@ Rentlot ka disa fuksionalitete,disa do t'i përmendim  në **vijim:**
 #### <i class="icon-file"></i> Ana teknike e aplikacionit.
 
 **Regjistrimi i përdoruesit** **---** Për t'u regjistruar duhet dhënë këto  informacione: 
-	   > -<kbd>Emrin</kbd>
-	   > -<kbd>Emrin për përdorim(username)</kbd>  
-	   > -<kbd>Numrin e telefonit</kbd> 
-	   > -<kbd>Fjalëkalimin</kbd>     
+	   > - <kbd>Emrin</kbd>
+	   > - <kbd>Emrin për përdorim(username)</kbd>  
+	   > - <kbd>Numrin e telefonit</kbd> 
+	   > - <kbd>Fjalëkalimin</kbd>     
 	   
 **Kyçja i përdoruesit** **--** Për t'u kyçur duhet dhënë këto  informacione: 
-	   > -<kbd>Emrin për përdorim(username)</kbd>  
-	   > -<kbd>Fjalëkalimin</kbd>     
+	   > - <kbd>Emrin për përdorim(username)</kbd>  
+	   > - <kbd>Fjalëkalimin</kbd>     
 
 
 **Opsioni "Remember me"** **---** Gjatë kyçjes përdoruesi mund të zgjedh opsionin "Remember me" për ruajtje të të dhënave për kyçje,ashtu që nëse e mbyll aplikacionin dhe e hap pastaj ai do të ridrejtohet në aplikacion pa pasur nevojë të kyçet përsëri.
@@ -63,7 +63,4 @@ Në projekt punuan:
 > - Kastriot Demaj
 > - Jetmir Veselaj
 
-----------
 
-
-----------
