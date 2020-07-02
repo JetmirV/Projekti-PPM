@@ -9,7 +9,7 @@ Rentlot është një android aplikacion i punuar për të përmbushur kushtet dh
 
 Çka përmban ky aplikacion?
 -------------
-Rentlot ka disa fuksionalitete,disa do t'i përmendim  në **vijim:**
+Rentlot ka disa fuksionalitete,ato t'i përmendim  në **vijim:**
 
 > -  Ofron mundësinë e regjistrimit të klientit/përdoruesit.
 > -  Të dhënat e vendosura në regjistrim,i mundësojnë klientit kyçje në aplikacion.
