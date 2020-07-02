@@ -1,27 +1,24 @@
 package com.example.car_rental;
 
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.car_rental.Common.Common;
+import com.example.car_rental.Database.Database;
 import com.example.car_rental.Model.Request;
 import com.example.car_rental.Model.Reservation;
 import com.example.car_rental.ViewHolder.CartAdapter;
-import com.example.car_rental.Database.Database;
-//import com.firebase.ui.database.paging.FirebaseDataSource;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -29,6 +26,8 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+//import com.firebase.ui.database.paging.FirebaseDataSource;
 
 public class Cart extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -42,6 +41,8 @@ public class Cart extends AppCompatActivity {
 
     List<Reservation> cart = new ArrayList<>();
     CartAdapter adapter;
+
+    public static String data = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +61,9 @@ public class Cart extends AppCompatActivity {
 
         txtTotalPrice = (TextView)findViewById(R.id.total);
         btnBook = (Button)findViewById(R.id.btnBook);
+
+        fetchData fetchData = new fetchData();
+        fetchData.execute();
 
         btnBook.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,10 +91,12 @@ public class Cart extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 // Create new request
+
                 Request request = new Request(
                         Common.currentUser.getUsername(),
                         Common.currentUser.getName(),
                         txtTotalPrice.getText().toString(),
+                        data,
                         cart
 
                 );
@@ -100,6 +106,7 @@ public class Cart extends AppCompatActivity {
                 // Delete cart
                 new Database(getBaseContext()).cleanCart();
                 Toast.makeText(Cart.this, "Thank you, Reservation processed! ", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Cart.this, data, Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -157,4 +164,41 @@ public class Cart extends AppCompatActivity {
 
         loadListCar();
     }
+
+    /*private String loadDate() {
+        String data = "";
+        String CurrentDate = "";
+        try {
+            URL url = new URL("http://worldtimeapi.org/api/timezone/Europe/Tirane");
+
+            HttpURLConnection httpURLConnection =(HttpURLConnection) url.openConnection();
+            InputStream inputStream = httpURLConnection.getInputStream();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+
+            String line = "";
+            while(line != null)
+            {
+
+                line = bufferedReader.readLine();
+                data = data + line;
+            }
+
+            Gson gson = new Gson();
+            JsonParser jsonParser = new JsonParser();
+
+
+            JsonObject jsonObject = jsonParser.parse(data.replace("null","")).getAsJsonObject();
+            CurrentDate = jsonObject.get("datetime").toString();
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        return CurrentDate + "\"";
+
+    }*/
+
 }

@@ -8,18 +8,28 @@ public class Request {
    // private  String address;
     private  String total;
     private  String status;
+    private String reservationDate;
     private  List<Reservation> cars; //list of car order;
 
     public Request() {
     }
 
-    public Request(String username, String name, /*String address,*/ String total, List<Reservation> cars) {
+    public Request(String username, String name, String total, String reservationDate, List<Reservation> cars) {
         this.Username = username;
         this.name = name;
         //this.address = address;
         this.total = total;
+        this.reservationDate = reservationDate;
         this.cars = cars;
         this.status = "0";//Default is 0, 0:placed ,1: Shipping,2:Shipped
+    }
+
+    public String getReservationDate() {
+        return reservationDate;
+    }
+
+    public void setReservationDate(String startDate) {
+        this.reservationDate = startDate;
     }
 
     public String getStatus() {
@@ -46,13 +56,6 @@ public class Request {
         this.name = name;
     }
 
-   /* public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }*/
 
     public String getTotal() {
         return total;

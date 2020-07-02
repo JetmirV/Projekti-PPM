@@ -1,17 +1,16 @@
 package com.example.car_rental;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.car_rental.Common.Common;
 import com.example.car_rental.Model.User;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,7 +22,8 @@ public class SignUp extends AppCompatActivity {
     MaterialEditText editPhone,editPassword,editName,editUsername;
     Button btnSignUp;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
 
@@ -38,8 +38,7 @@ public class SignUp extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference table_user = database.getReference("User");
 
-        btnSignUp.setOnClickListener(new View.OnClickListener()
-        {
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (Common.isConnectedToInternet(getBaseContext())) {
@@ -50,45 +49,72 @@ public class SignUp extends AppCompatActivity {
 
                     table_user.addValueEventListener(new ValueEventListener() {
                         @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+                        {
                             //Validate the name input
-                            if (!(editName.getText().toString()).matches(".*\\d.*")) {   //Validate the Phone input
-                                if (!(editPhone.getText().toString()).matches(".*[a-z].*")) {   //check if the username exists
-                                    if (dataSnapshot.child(editUsername.getText().toString().toLowerCase()).exists()) {
-                                        mDialog.dismiss();
-                                        Toast.makeText(SignUp.this, "Username already exists !", Toast.LENGTH_SHORT).show();
-                                    } else {
-                                        mDialog.dismiss();
-                                        User user = new User(editName.getText().toString(), editPassword.getText().toString(), editPhone.getText().toString());
-                                        table_user.child(editUsername.getText().toString().toLowerCase()).setValue(user);
-                                        Toast.makeText(SignUp.this, "Sign Up succsesfull !", Toast.LENGTH_SHORT).show();
-                                        finish();
-                                    }
-                                } else {
-                                    mDialog.dismiss();
-                                    Toast.makeText(SignUp.this, "Phone field contains letters!", Toast.LENGTH_SHORT).show();
-                                }
+                            if (!editName.getText().toString().equals(""))
+                            {
+                                if (!(editName.getText().toString()).matches(".*\\d.*"))
+                                {
+                                    if(!(editUsername.getText().toString()).equals(""))
+                                    {
+                                        if(!(editPhone.getText().toString()).equals(""))
+                                        {
+                                            if(!(editPassword.getText().toString()).equals(""))
+                                            {
+                                                if (dataSnapshot.child(editUsername.getText().toString().toLowerCase()).exists())
+                                                {
+                                                    mDialog.dismiss();
+                                                    Toast.makeText(SignUp.this, "Username already exists !", Toast.LENGTH_SHORT).show();
+                                                } else
+                                                {
+                                                    mDialog.dismiss();
+                                                    User user = new User(editName.getText().toString(), editPassword.getText().toString(), editPhone.getText().toString());
+                                                    table_user.child(editUsername.getText().toString().toLowerCase()).setValue(user);
+                                                    Toast.makeText(SignUp.this, "Sign Up succsesfull !", Toast.LENGTH_SHORT).show();
+                                                    finish();
+                                                }
+                                            }else
+                                            {
+                                                mDialog.dismiss();
+                                                Toast.makeText(SignUp.this, "Password field is empty!", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }else
+                                        {
+                                            mDialog.dismiss();
+                                            Toast.makeText(SignUp.this, "Phone Number field is empty!", Toast.LENGTH_SHORT).show();
+                                        }
 
-                            } else {
+                                    }else
+                                    {
+                                        mDialog.dismiss();
+                                        Toast.makeText(SignUp.this, "Username field is empty!", Toast.LENGTH_SHORT).show();
+                                    }
+                                } else
+                                    {
+                                    mDialog.dismiss();
+                                    Toast.makeText(SignUp.this, "Name field contains numbers!", Toast.LENGTH_SHORT).show();
+                                    }
+                            } else
+                                {
                                 mDialog.dismiss();
-                                Toast.makeText(SignUp.this, "Name field contains numbers!", Toast.LENGTH_SHORT).show();
-                            }
+                                Toast.makeText(SignUp.this, "Name field is empty!", Toast.LENGTH_SHORT).show();
+                                }
                         }
 
                         @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                        public void onCancelled(@NonNull DatabaseError error) {
 
                         }
+
                     });
 
-                }
-                else
-                {
-                    Toast.makeText(SignUp.this,"Please check you internet connection!",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(SignUp.this, "Please check you internet connection!", Toast.LENGTH_SHORT).show();
                     return;
                 }
             }
         });
-
     }
+
 }

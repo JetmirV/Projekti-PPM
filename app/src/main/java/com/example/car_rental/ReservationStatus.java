@@ -1,16 +1,14 @@
 package com.example.car_rental;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-
 import com.example.car_rental.Common.Common;
 import com.example.car_rental.Model.Request;
-import com.example.car_rental.Model.Reservation;
 import com.example.car_rental.ViewHolder.ReservationViewHolder;
-import com.example.car_rental.Database.Database;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
