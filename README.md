@@ -14,7 +14,7 @@ Rentlot ka disa fuksionalitete,ato t'i përmendim  në **vijim:**
 > -  Ofron mundësinë e regjistrimit të klientit/përdoruesit.
 > -  Të dhënat e vendosura në regjistrim,i mundësojnë klientit kyçje në aplikacion.
 > -  Makinat janë të ndara në kategori,dhe përdoruesit i ofron mundësi të gjerë zgjedhjesh.
-> -  Për secilën kategori ka një numër të konsideueshëm veturash.
+> -  Për secilën kategori ka një numër të konsiderueshëm veturash.
 > - Vetura e dëshiruar mund të gjendet me kërkim manual,apo duke shfytëzuar mundësin e kërkimit **"Search"** duke shënuar në fushën përkatëse emrin e veturës.
 > -  Veturat mund të zgjedhen,dhe pastaj klienti infrormohet për çmimin e shfrytëzimit brenda një ore.
 > - Rezervimi mund të bëhet për disa orë apo disa ditë,e kjo varësisht nga dëshira e  klientit!
