@@ -67,7 +67,7 @@ Në projekt punuan:
 > - Jetmir Veselaj
 
 
-> **Univeriteti i Prishtinës** //
+> **Universiteti i Prishtinës** //
 > **Fakulteti i Inxhinierisë Elektrike dhe Kompjuterike** //
 > **Departamenti i Inxhinierisë Kompjuterike** 
 
