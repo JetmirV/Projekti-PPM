@@ -37,9 +37,8 @@ Rentlot ka disa fuksionalitete,disa do t'i përmendim  në **vijim:**
 > - <kbd>Fjalëkalimin</kbd>     
 	   
 **Kyçja i përdoruesit** **--** Për t'u kyçur duhet dhënë këto  informacione: 
-
-	   > - <kbd>Emrin për përdorim(username)</kbd>  
-	   > - <kbd>Fjalëkalimin</kbd>     
+> - <kbd>Emrin për përdorim(username)</kbd>  
+> - <kbd>Fjalëkalimin</kbd>     
 
 
 **Opsioni "Remember me"** **---** Gjatë kyçjes përdoruesi mund të zgjedh opsionin "Remember me" për ruajtje të të dhënave për kyçje,ashtu që nëse e mbyll aplikacionin dhe e hap pastaj ai do të ridrejtohet në aplikacion pa pasur nevojë të kyçet përsëri.
