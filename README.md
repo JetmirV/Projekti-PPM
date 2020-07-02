@@ -71,4 +71,4 @@ Në projekt punuan:
 > **Fakulteti i Inxhinierisë Elektrike dhe Kompjuterike** //
 > **Departamenti i Inxhinierisë Kompjuterike** //
 
-                                                                                   > Korrik/2020
+                                                                            Korrik/2020
