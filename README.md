@@ -67,3 +67,7 @@ Në projekt punuan:
 > - Jetmir Veselaj
 
 
+Univeriteti i Prishtinës
+Fakulteti i Inxhinierisë Elektrike dhe Kompjuterike
+Departamenti i Inxhinierisë Kompjuterike
+                                                                                   Prishtinë/2020
